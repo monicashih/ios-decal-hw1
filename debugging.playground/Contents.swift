@@ -15,39 +15,39 @@ class Foo {
     var wordB : String!
     
     init (words: [String?]) {
-        wordA = words[0]?
-        wordB = words[1]?
+        wordA = words[0]!
+        wordB = words[1]!
     }
     
-//: [EXPLAIN YOUR ANSWER TO Q1 HERE]
+//: The question marks after 'words[0]' and 'words[1]' needs to be exclamation marks instead so that it becomes an implicitly unwrapped optional.
     
 
     
 //: ## Q2: Variable Types and Function Types
 //: Why does the compiler dislike the for loop? Also, what should we return?
     
-    func arePalindromes(words: [String]) -> Bool! {
+    class func arePalindromes(words: [String]) -> Bool! {
         let reversedWords = words.map() {String($0.characters.reverse())}
         var numElements = words.count
         
-        for let i = 0; i < numElements; i++ {
+        for var i = 0; i < numElements; i++ {
             if words[i] != reversedWords[i] {
                 return false
             }
         }
         
-        return nil
+        return true
     }
     
-//: [EXPLAIN YOUR ANSWER TO Q2 HERE]
+//: 'let' is used incorrectly. We're changing the value of 'i', but 'let' won't let it do that. It should be 'var' instead.
     
     
     
 //: ## Q3: More functions, and object initialization
 //: The method should be returning true or false -- what's wrong?
 //: Are we initializing the dictionary correctly?
-    func isAnagram(wordA: String, wordB: String) -> Bool? {
-        var countLetters : [Character : Int]
+    class func isAnagram(wordA: String, wordB: String) -> Bool! {
+        var countLetters = [Character : Int]()
         var lenA = wordA.characters.count
         var lenB = wordB.characters.count
         
@@ -81,11 +81,11 @@ class Foo {
             }
         }
         
-        return nil
+        return true
     }
 }
 
-//: [EXPLAIN YOUR ANSWER TO Q3 HERE]
+//: 'Bool!' shouldn't be optional because we want it to return true or false. We know it will receive a value of true or false. The dictionary is initialized incorrectly; instead of a ':' it should be a '='. The dictionary also needs to be called
 
 
 //: **Do not** change anything below.
