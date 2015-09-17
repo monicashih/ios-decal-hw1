@@ -19,7 +19,7 @@ class Foo {
         wordB = words[1]!
     }
     
-//: The question marks after 'words[0]' and 'words[1]' needs to be exclamation marks instead so that it becomes an implicitly unwrapped optional.
+//: The question marks after 'words[0]' and 'words[1]' needs to be exclamation marks instead so that it becomes an implicitly unwrapped optional. Placing a question mark after assigning it does not unwrap the value.
     
 
     
